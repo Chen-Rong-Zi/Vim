@@ -21,14 +21,17 @@ imap ; <Enter>
 nmap Tv :e \Program Files (x86)\Vim\_vimrc<Enter>
 
 " return to the Current Directory
-nmap Te :e.<Enter>
+nmap Te :e  %:p:h/.."<Enter>
 
 " return to the /Program Files (x86)/
 nmap Tp :e /Program Files (x86)<Enter>
 
 nmap Tr :!python "%:p"<Enter>
+
 " number in front of lines
+hi LineNr guifg=#5C6370
 set relativenumber
+set ruler
 set number
 set nowrap
 set ignorecase
@@ -53,6 +56,8 @@ set list
 set listchars=tab:>-,trail:-
 
 " Fold paragraph
+set autoindent
+set smartindent
 set foldmethod=indent
 nmap ff za
 nmap fk zm
@@ -63,6 +68,16 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set smarttab
+
+" Shut down the error bell
+set novisualbell
+set noerrorbells
+
+" Share the clipboard
+set clipboard+=unnamed
+
+set laststatus=2
 
 " Spell Check
 nmap sc :set spell!<Enter>
@@ -124,42 +139,24 @@ nmap S :w<Enter>
 imap ( ()<left>
 imap < <><left>
 
-set lines=100 columns=200
+"set lines=500 columns=500
 set guioptions-=T
 set guioptions-=m
 set guioptions-=L
 set guioptions-=r
 set guioptions-=b
 
-"Highlight
-highlight MyColor guifg=#6699cc guibg=#2d2d2d
-" syntax match Identifier /\s+\s/
-" syntax match Identifier /\s=\s/
-" syntax match Identifier /\s*\s/
-" syntax match Identifier /\s\/\s/
-" syntax match Identifier /\s+=\s/
-" syntax match Identifier /\s-=\s/
-" syntax match Identifier /\s*=\s/
-" syntax match Identifier /\s\/=\s/
-" syntax match Identifier /\w(,)\s/
-" syntax match Funvtion /\w*(/
-" syntax match Funvtion /)/
-"
-"
-" highlight SpecialKey term=bold ctermfg=238 guifg=#515151
-" highlight Identifier term=underline ctermfg=210 guifg=#f2777a
-" highlight Function term=bold ctermfg=238 guifg=#515151
-" highlight SpecialKey term=bold ctermfg=238 guifg=#515151
-" highlight SpecialKey term=bold ctermfg=238 guifg=#515151
-" highlight SpecialKey term=bold ctermfg=238 guifg=#515151
-" highlight SpecialKey term=bold ctermfg=238 guifg=#515151
-" highlight SpecialKey term=bold ctermfg=238 guifg=#515151
-" highlight SpecialKey term=bold ctermfg=238 guifg=#515151
-" highlight SpecialKey term=bold ctermfg=238 guifg=#515151
-" highlight SpecialKey term=bold ctermfg=238 guifg=#515151
+" HELP Document
+set helplang=cn
+set encoding=utf-8
 
+
+noremap \| <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleFullscreen', 0)<Enter>
+" 按 F12 切换窗口透明度
+noremap <C-j>j <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "100,180")<Enter>
+noremap <C-k>k <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "210,255")<Enter>
 
 let g:lightline = {
     \ 'colorscheme': 'onedark',
-    \ }
+\}
 let g:airline_theme='onedark'
