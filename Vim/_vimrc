@@ -13,10 +13,14 @@
 "      ██║ ╚═╝ ██║   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "      ╚═╝     ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 
+" When typing ' =  -  +  /  *  % ', add spaces automatically
+imap <space>+ <space>+<space><right>
+imap <space>= <space>=<space><right>
+imap <space>- <space>-<space><right>
+imap <space>* <space>*<space><right>
+imap <space>/ <space>/<space><right>
+imap <space>% <space>%<space><right>
 
-cmap ; <Enter>
-nmap ; <Enter>
-imap ; <Enter>
 " return to the file .vimrc
 nmap Tv :e \Program Files (x86)\Vim\_vimrc<Enter>
 
@@ -26,7 +30,8 @@ nmap Te :e  %:p:h/.."<Enter>
 " return to the /Program Files (x86)/
 nmap Tp :e /Program Files (x86)<Enter>
 
-nmap Tr :!python "%:p"<Enter>
+" To Run the python script by type Tr
+nmap Tr <S-s>:!python "%:p"<Enter>
 
 " number in front of lines
 hi LineNr guifg=#5C6370
@@ -76,7 +81,6 @@ set noerrorbells
 
 " Share the clipboard
 set clipboard+=unnamed
-
 set laststatus=2
 
 " Spell Check
@@ -89,12 +93,17 @@ nmap s m
 nmap 7 5j
 nmap 8 5k
 
+" shutdown the Error Warning
+set vb t_vb=
+au GuiEnter * set t_vb=
+
 " Syntax Highlight
 syntax on
 
 " Color Scheme | Font
 set guifont:Consolas:h15
 syntax enable
+
 "set term=xterm-256color
 set t_Co=256
 "colorscheme Tomorrow-Night-Eighties
@@ -104,6 +113,10 @@ set t_Co=256
 "set default-terminal"screen-256color"
 colorscheme onedark
 
+" 冒号转换行 
+cmap ; <Enter>
+nmap ; <Enter>
+imap ; <right><right><right><right><right><right><right><right><right><right><right><right><right><Enter>
 
 " 高亮 显示
 " set hlsearch
@@ -151,12 +164,11 @@ set helplang=cn
 set encoding=utf-8
 
 
+" Full Screen Set
 noremap \| <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleFullscreen', 0)<Enter>
 " 按 F12 切换窗口透明度
 noremap <C-j>j <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "100,180")<Enter>
-noremap <C-k>k <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "210,255")<Enter>
+noremap <C-k>k <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "225,255")<Enter>
 
-let g:lightline = {
-    \ 'colorscheme': 'onedark',
-\}
+let g:lightline = { 'colorscheme': 'onedark',}
 let g:airline_theme='onedark'
