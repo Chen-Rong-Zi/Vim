@@ -14,18 +14,30 @@
 "      ╚═╝     ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 
 " When typing ' =  -  +  /  *  % ', add spaces automatically
-imap <space>+ <space>+<space><right>
-imap <space>= <space>=<space><right>
-imap <space>- <space>-<space><right>
-imap <space>* <space>*<space><right>
-imap <space>/ <space>/<space><right>
-imap <space>% <space>%<space><right>
+inoremap + <space>+<space><left><right>
+inoremap - <space>-<space><left><right>
+inoremap * <space>*<space><left><right>
+inoremap / <space>/<space><left><right>
+inoremap % <space>%<space><left><right>
+inoremap = <space>=<space><left><right>
+
+" Auto Complete the () <> [] {}
+inoremap ' ''<esc>i
+inoremap " ""<esc>i
+inoremap # #<space><left><right>
+inoremap { {}<left>
+inoremap [ []<left>
+inoremap ( ()<left>
+inoremap < <><left>
+inoremap , ,<space>
+inoremap ! _
+nnoremap <tab><tab> /(<++>)<Enter><right>cf>
 
 " return to the file .vimrc
 nmap Tv :e \Program Files (x86)\Vim\_vimrc<Enter>
 
 " return to the Current Directory
-nmap Te :e  %:p:h/.."<Enter>
+nmap Te :e  %:p/..<Enter>
 
 " return to the /Program Files (x86)/
 nmap Tp :e /Program Files (x86)<Enter>
@@ -87,6 +99,7 @@ set laststatus=2
 nmap sc :set spell!<Enter>
 imap <S-s><S-C> <C-x>s
 
+set backspace=2
 " Shortcuts switched
 nmap <space> :
 nmap s m
@@ -148,9 +161,6 @@ nmap = :vertical resize +5<Enter>
 " 保存
 nmap S :w<Enter>
 
-" Auto Complete the () or <>
-imap ( ()<left>
-imap < <><left>
 
 "set lines=500 columns=500
 set guioptions-=T
