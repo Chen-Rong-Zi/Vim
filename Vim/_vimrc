@@ -1,4 +1,9 @@
+"      ███╗   ███╗██╗   ██╗██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
+"      ████╗ ████║╚██╗ ██╔╝██║   ██║██║████╗ ████║██╔══██╗██╔════╝
+"      ██╔████╔██║ ╚████╔╝ ██║   ██║██║██╔████╔██║██████╔╝██║
 "      ██║╚██╔╝██║  ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
+"      ██║ ╚═╝ ██║   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
+"      ╚═╝     ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 
 "      ███╗   ███╗██╗   ██╗██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 "      ████╗ ████║╚██╗ ██╔╝██║   ██║██║████╗ ████║██╔══██╗██╔════╝
@@ -11,159 +16,98 @@
 let mapleader = ","
 
 " Comment the line in visual mode
-vnoremap # <c-v>0I# <esc>
-vnoremap " <c-v>0I" <esc>
-vnoremap / <C-v>0I// <esc>
+vn # <c-v>0I# <esc>
+vn " <c-v>0I" <esc>
+vn / <C-v>0I// <esc>
+"Transform the word to UPPER-CASE
+ino <c-u> <esc>viwUviwA
+nn <c-u> <esc>viwU
 
-" # # # PYTHON # # # 
-" Transform the word to UPPER-CASE
-
-autocmd Filetype python inoremap <c-u> <esc>viwUviwA
-autocmd Filetype python 
 " <Backspace> in insert mode
-autocmd Filetype python inoremap <c-i> <BS>
+ino <c-i> <BS>
+
 " inoremap <c-u> <space><space><space><space>
 
+
+
+" ██████╗ ██╗   ██╗████████╗██╗  ██╗ ██████╗ ███╗   ██╗
+" ██╔══██╗╚██╗ ██╔╝╚══██╔══╝██║  ██║██╔═══██╗████╗  ██║
+" ██████╔╝ ╚████╔╝    ██║   ███████║██║   ██║██╔██╗ ██║
+" ██╔═══╝   ╚██╔╝     ██║   ██╔══██║██║   ██║██║╚██╗██║
+" ██║        ██║      ██║   ██║  ██║╚██████╔╝██║ ╚████║
+" ╚═╝        ╚═╝      ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+"(<++>)
+aug python
+autocmd!
 " When typing ' =  -  +  /  *  % ', add spaces automatically
-autocmd Filetype python inoremap + <space>+<space><left><right>
-autocmd Filetype python inoremap - <space>-<space><left><right>
-autocmd Filetype python inoremap * <space>*<space><left><right>
-autocmd Filetype python inoremap / <space>/<space><left><right>
-autocmd Filetype python inoremap % <space>%<space><left><right>
-autocmd Filetype python inoremap = <space>=<space><left><right>
-autocmd Filetype python inoremap # #<space><left><right>
+au filetype python ino <buffer> + <space>+<space><left><right>
+au filetype python ino <buffer> - <space>-<space><left><right>
+au filetype python ino <buffer> * <space>*<space><left><right>
+au filetype python ino <buffer> / <space>/<space><left><right>
+au filetype python ino <buffer> % <space>%<space><left><right>
+au filetype python ino <buffer> = <space>=<space><left><right>
+au filetype python ino <buffer> # #<space><left><right>
 
-" Auto Complete the () <> [] {}
-autocmd Filetype python inoremap < <><left>
-autocmd Filetype python inoremap ( ()<left>
-autocmd Filetype python inoremap [ []<left>
-autocmd Filetype python inoremap { {}<left>
+" auto complete the () <> [] {}
+au filetype python ino <buffer> < <><left>
+au filetype python ino <buffer> ( ()<left>
+au filetype python ino <buffer> [ []<left>
+au filetype python ino <buffer> { {}<left>
+au filetype python ino <buffer> __ ____<left><left>
 
-"inoremap , ,<space>
-autocmd Filetype python inoremap <leader>' <esc>viwA'<esc>bi'<esc>ela
-autocmd Filetype python inoremap <leader>" <esc>viwA"<esc>bi"<esc>ela
-autocmd Filetype python inoremap <leader>( <esc>viwA)<esc>bi(<esc>ela
-autocmd Filetype python inoremap <leader>[ <esc>viwA]<esc>bi[<esc>ela
-autocmd Filetype python inoremap <leader>{ <esc>viwA}<esc>bi{<esc>ela
+au filetype python ino <buffer> __ ____<left><left>
 
+" surround the word in the insert mode
+au filetype python ino <buffer> <leader>' <esc>viwA'<esc>bi'<esc>ela
+au filetype python ino <buffer> <leader>" <esc>viwA"<esc>bi"<esc>ela
+au filetype python ino <buffer> <leader>( <esc>viwA)<esc>bi(<esc>ela
+au filetype python ino <buffer> <leader>[ <esc>viwA]<esc>bi[<esc>ela
+au filetype python ino <buffer> <leader>{ <esc>viwA}<esc>bi{<esc>ela
+au filetype python ino <buffer> <leader>< <esc>viwA><esc>bi<<esc>ela
 
-"nnoremap , ,<space>
-autocmd Filetype python nnoremap <leader>' <esc>viwA'<esc>bi'<esc>el
-autocmd Filetype python nnoremap <leader>" <esc>viwA"<esc>bi"<esc>el
-autocmd Filetype python nnoremap <leader>( <esc>viwA)<esc>bi(<esc>el
-autocmd Filetype python nnoremap <leader>[ <esc>viwA]<esc>bi[<esc>el
-autocmd Filetype python nnoremap <leader>{ <esc>viwA}<esc>bi{<esc>el
+" surround the word in the normal mode
+au filetype python nn <buffer> <leader>' <esc>viwA'<esc>bi'<esc>el
+au filetype python nn <buffer> <leader>" <esc>viwA"<esc>bi"<esc>el
+au filetype python nn <buffer> <leader>( <esc>viwA)<esc>bi(<esc>el
+au filetype python nn <buffer> <leader>[ <esc>viwA]<esc>bi[<esc>el
+au filetype python nn <buffer> <leader>{ <esc>viwA}<esc>bi{<esc>el
+au filetype python nn <buffer> <leader>< <esc>viwa><esc>bi<<esc>el
 
-autocmd Filetype python iabbrev __ ____<left><left>
-autocmd Filetype python iabbrev @@ 1398881912@qq.com
-autocmd Filetype python iabbrev pirnt print
+" Comment the line
+au filetype python vn <buffer> <leader>c <C-v>0I# <esc>
+au filetype python nn <buffer> <leader>c <C-v>0I# <esc>
 
-" <Backspace> in insert mode
-cnoremap <c-i> <BS>
-
-" move easily by <c-h><c-l>
-cnoremap <c-h> <left>
-cnoremap <c-l> <right>
-cnoremap <c-j> <down>
-cnoremap <c-k> <up>
-
-" move easily by <c-h><c-l>
-inoremap <c-h> <left>
-inoremap <c-l> <right>
-inoremap <c-j> <down>
-inoremap <c-k> <up>
-
-nnoremap <tab><tab> /(<++>)<Enter><right>cf>
-
-" return to the file .vimrc
-nnoremap <leader>v :e ~/.vimrc<CR>
-
-" return to the Current Directory
-nnoremap <leader>e :e .<CR>
-
-" return to the /Program Files (x86)/
-nnoremap <leader>p :e ~/Python<CR>
-
-" To Run the python script by type Tr
-nnoremap <leader>r :w<Enter>:!python3 "%:p"<CR>
-
-" edit $MYVIMRC
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <leader>sv :w<CR> :source $MYVIMRC<CR>
-
-" easymotion
-map <Leader>s <Plug>(easymotion-prefix)
-nmap f ,ss
-nnoremap F f
-nnoremap tt :NERDTree<Enter>
-
-" Shortcuts
-inoremap jk <esc>
-
-"cmap 1 !
-nnoremap w <C-w>
-nnoremap s m
-nnoremap 7 5j
-nnoremap 8 5k
-
-" Spell Check
-nnoremap sc :set spell!<Enter>
-inoremap <s-s><s-c> <c-x>s
-
-" Shortcuts switched
-nnoremap <space> :
-nnoremap s m
-nnoremap 7 5j
-nnoremap 8 5k
-
-" 冒号转换行 
-cnoremap ; <Enter>
-nnoremap ; <Enter>
-inoremap ; <Esc>o
-inoremap <leader>; :<Esc>o
-
-" Tab Site
-nnoremap th :-tabnext<Enter>
-nnoremap tl :+tabnext<Enter>
-
-" Screen Create
-nnoremap sk :set splitbelow<Enter>:split<Enter>
-nnoremap sj :set nosplitbelow<Enter>:split<Enter>
-nnoremap sh :set splitright<Enter>:vsplit<Enter>
-nnoremap sl :set nosplitright<Enter>:vsplit<Enter>
-
-" Screen Switch
-nnoremap K <C-w>K
-nnoremap J <C-w>J
-nnoremap H <C-w>H
-nnoremap L <C-w>L
-
-" Screen Size
-nnoremap _ :resize -3<Enter>
-nnoremap + :resize +3<Enter>
-nnoremap <c--> :vertical resize -3<Enter>
-nnoremap <C-=> :vertical resize +3<Enter>
-
-" save the file in the buffer 
-nnoremap S :w<Enter>
+au filetype python ia <buffer> iff if:<left>
+au filetype python ia <buffer> def def:<left>
+au filetype python ia <buffer> class class:<left>
+au filetype python ia <buffer> ret return
+au filetype python ia <buffer> @@ 1398881912@qq.com
+au filetype python ia <buffer> pirnt print
 
 "  <tab> and <space> visualised
-set list
-set listchars=tab:>-,trail:-
+au filetype python set list
+au filetype python set listchars=tab:>-,trail:-
+aug END
 
-" Fold paragraph
-" set equalprg=indent
-set autoindent
-set smartindent
-set foldmethod=indent
-nnoremap ff za
-nnoremap fk zm
-nnoremap fj zr
+
+
+" ██╗   ██╗██╗███╗   ███╗
+" ██║   ██║██║████╗ ████║
+" ██║   ██║██║██╔████╔██║
+" ╚██╗ ██╔╝██║██║╚██╔╝██║
+"  ╚████╔╝ ██║██║ ╚═╝ ██║
+"   ╚═══╝  ╚═╝╚═╝     ╚═╝
+" (<++>)
+let maplocalleader = "1"
+
+" color scheme | font
+colorscheme onedark
+set guifont:Consolas:h15
+
 " number in front of lines
-hi LineNr guifg=#5C6370
-set norelativenumber
+hi  linenr guifg=#5c6370
 set ruler
-set nonumber
+set rnu
 set nowrap
 set ignorecase
 set wildmenu
@@ -173,70 +117,164 @@ set encoding=utf-8
 set scrolloff=5
 set nu ru ai si ts=4 sw=4
 
-" Tab methods
+" highlight setting
+" set hlsearch
+set incsearch
+" 
+" set lines=240 columns=160
+set guioptions-=T
+set guioptions-=t
+set guioptions-=m
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+set guioptions-=b
+set guioptions-=B
+
+" set helplang=cn
+set encoding=utf-8
+
+" share the clipboard
+set clipboard+=unnamed
+set laststatus=2
+
+" shut down the error warning
+set novisualbell
+set noerrorbells
+set vb t_vb=
+au guienter * set t_vb=
+
+" syntax highlight
+syntax on
+
+" fold tab method
 set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set smarttab
 set backspace=2
+set autoindent
+set smartindent
+set foldmethod=indent
+nn ff za
+nn fk zm
+nn fj zr
 
-" Shut down the error bell
-set novisualbell
-set noerrorbells
+" return to the file .vimrc
+nn <leader>v :e $MYVIMRC<CR>
 
-" Share the clipboard
-set clipboard+=unnamed
-set laststatus=2
-" shutdown the Error Warning
-set vb t_vb=
-au GuiEnter * set t_vb=
+" return to the current directory
+nn <leader>e :e .<CR>
 
-" Syntax Highlight
-syntax on
+" return to the /program files (x86)/
+nn <leader>p :e/Program Files (x86)/Vim/My_Python<CR>
+"
+" to run the python script by type tr
+nn <leader>r :w<CR>:!python "%:p"<CR>
 
-" Color Scheme | Font
-set guifont:Menlo:h21
-syntax enable
+" edit $myvimrc
+nn <leader>ev :vsplit $MYVIMRC<CR>
+nm <leader>sv :w<CR>:source $MYVIMRC<CR>\|\|
 
+" tab site
+nn th :-tabnext<CR>
+nn tl :+tabnext<CR>
+
+" screen create
+nn sl :set nosplitright<CR>:vsplit<CR>
+
+" screen switch
+nn wk <c-w>k
+nn wj <c-w>j
+nn wh <c-w>h
+nn wl <c-w>l
+
+" screen size
+nn _ :resize -3<CR>
+nn + :resize +3<CR>
+nn - :vertical resize -3<CR>
+nn = :vertical resize +3<CR>
+
+"cmap 1 !
+nn w <c-w>
+nn s m
+nn 7 5j
+nn 8 5k
+
+" save the file in the buffer 
+nn S :w<CR>
+
+" shortcuts
+ino jk <esc>
+
+" 冒号转换行 
+cno ; <CR>
+nn ; <CR>
+ino ; <esc>o
+
+" spell check
+nn sc :set spell!<CR>
+ino <s-s><s-c> <c-x>s
+
+" shortcuts switched
+nn <space> :
+
+" <backspace> in insert mode
+cno <c-i> <bs>
+
+" move easily by <c-h><c-l>
+cno <c-h> <left>
+cno <c-l> <right>
+cno <c-j> <down>
+cno <c-k> <up>
+
+" move easily by <c-h><c-l>
+ino <c-h> <left>
+ino <c-l> <right>
+ino <c-j> <down>
+ino <c-k> <up>
+
+" Anchor Point
+ino <leader>f <esc>/(<++>)<CR>ca(
+nn <leader>f /(<++>)<CR>
 "set term=xterm-256color
-set t_Co=256
-"colorscheme Tomorrow-Night-Eighties
+" set t_co=256
+"colorscheme tomorrow-night-eighties
 "g:onedark_hide_endofbuffer:1
 "g:onedark_termcolor:256
-"set -g default-terminal"xterm-256color"
-"set default-terminal"screen-256color"
-colorscheme onedark
+" set -g default-terminal"xterm-256color"
+" set default-terminal"screen-256color"
+ca cdp cd<space>/Program Files (x86)/Vim/My_Python<CR>
 
 
-" Highlight setting
-" set hlsearch
-set incsearch
 
-"set lines=500 columns=500
-set guioptions-=T
-set guioptions-=m
-set guioptions-=L
-set guioptions-=r
-set guioptions-=b
 
-" HELP Document
-set helplang=CN
-set encoding=utf-8
-
+" ██████╗ ██╗     ██╗   ██╗ ██████╗       ██╗███╗   ██╗
+" ██╔══██╗██║     ██║   ██║██╔════╝       ██║████╗  ██║
+" ██████╔╝██║     ██║   ██║██║  ███╗█████╗██║██╔██╗ ██║
+" ██╔═══╝ ██║     ██║   ██║██║   ██║╚════╝██║██║╚██╗██║
+" ██║     ███████╗╚██████╔╝╚██████╔╝      ██║██║ ╚████║
+" ╚═╝     ╚══════╝ ╚═════╝  ╚═════╝       ╚═╝╚═╝  ╚═══╝
+"(<++>)
+" NERDTree
+nn tt :NERDTree<CR>
 
 " Full Screen Set
-"noremap \| <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleFullscreen', 0)<Enter>
-"" 按 F12 切换窗口透明度
-"noremap <C-j>j <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "100,180")<Enter>
-"noremap <C-k>k <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "225,255")<Enter>
+nn \| <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleFullscreen', 0)<CR>
 
+"" 按 F12 切换窗口透明度
+no <C-j>j <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "100,180")<CR>
+no <C-k>k <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "225,255")<CR>
+
+" easymotion
+map <leader>s <plug>(easymotion-prefix)
+nm f ,ss
+
+" airline
 let g:lightline         = { 'colorscheme': 'onedark',}
 let g:airline_theme     = 'onedark'
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
-
-
-
-
-
+ 
