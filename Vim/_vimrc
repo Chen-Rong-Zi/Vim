@@ -1,10 +1,4 @@
-"      ███╗   ███╗██╗   ██╗██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
-"      ████╗ ████║╚██╗ ██╔╝██║   ██║██║████╗ ████║██╔══██╗██╔════╝
-"      ██╔████╔██║ ╚████╔╝ ██║   ██║██║██╔████╔██║██████╔╝██║
 "      ██║╚██╔╝██║  ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
-"      ██║ ╚═╝ ██║   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
-"      ╚═╝     ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
-
 
 "      ███╗   ███╗██╗   ██╗██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 "      ████╗ ████║╚██╗ ██╔╝██║   ██║██║████╗ ████║██╔══██╗██╔════╝
@@ -12,44 +6,164 @@
 "      ██║╚██╔╝██║  ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
 "      ██║ ╚═╝ ██║   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "      ╚═╝     ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
+
+" Leader map
+let mapleader = ","
+
+" Comment the line in visual mode
+vnoremap # <c-v>0I# <esc>
+vnoremap " <c-v>0I" <esc>
+vnoremap / <C-v>0I// <esc>
+
+" # # # PYTHON # # # 
+" Transform the word to UPPER-CASE
+
+autocmd Filetype python inoremap <c-u> <esc>viwUviwA
+autocmd Filetype python 
+" <Backspace> in insert mode
+autocmd Filetype python inoremap <c-i> <BS>
+" inoremap <c-u> <space><space><space><space>
 
 " When typing ' =  -  +  /  *  % ', add spaces automatically
-inoremap + <space>+<space><left><right>
-inoremap - <space>-<space><left><right>
-inoremap * <space>*<space><left><right>
-inoremap / <space>/<space><left><right>
-inoremap % <space>%<space><left><right>
-inoremap = <space>=<space><left><right>
+autocmd Filetype python inoremap + <space>+<space><left><right>
+autocmd Filetype python inoremap - <space>-<space><left><right>
+autocmd Filetype python inoremap * <space>*<space><left><right>
+autocmd Filetype python inoremap / <space>/<space><left><right>
+autocmd Filetype python inoremap % <space>%<space><left><right>
+autocmd Filetype python inoremap = <space>=<space><left><right>
+autocmd Filetype python inoremap # #<space><left><right>
 
 " Auto Complete the () <> [] {}
-inoremap ' ''<esc>i
-inoremap " ""<esc>i
-inoremap # #<space><left><right>
-inoremap { {}<left>
-inoremap [ []<left>
-inoremap ( ()<left>
-inoremap < <><left>
-inoremap , ,<space>
-inoremap ! _
+autocmd Filetype python inoremap < <><left>
+autocmd Filetype python inoremap ( ()<left>
+autocmd Filetype python inoremap [ []<left>
+autocmd Filetype python inoremap { {}<left>
+
+"inoremap , ,<space>
+autocmd Filetype python inoremap <leader>' <esc>viwA'<esc>bi'<esc>ela
+autocmd Filetype python inoremap <leader>" <esc>viwA"<esc>bi"<esc>ela
+autocmd Filetype python inoremap <leader>( <esc>viwA)<esc>bi(<esc>ela
+autocmd Filetype python inoremap <leader>[ <esc>viwA]<esc>bi[<esc>ela
+autocmd Filetype python inoremap <leader>{ <esc>viwA}<esc>bi{<esc>ela
+
+
+"nnoremap , ,<space>
+autocmd Filetype python nnoremap <leader>' <esc>viwA'<esc>bi'<esc>el
+autocmd Filetype python nnoremap <leader>" <esc>viwA"<esc>bi"<esc>el
+autocmd Filetype python nnoremap <leader>( <esc>viwA)<esc>bi(<esc>el
+autocmd Filetype python nnoremap <leader>[ <esc>viwA]<esc>bi[<esc>el
+autocmd Filetype python nnoremap <leader>{ <esc>viwA}<esc>bi{<esc>el
+
+autocmd Filetype python iabbrev __ ____<left><left>
+autocmd Filetype python iabbrev @@ 1398881912@qq.com
+autocmd Filetype python iabbrev pirnt print
+
+" <Backspace> in insert mode
+cnoremap <c-i> <BS>
+
+" move easily by <c-h><c-l>
+cnoremap <c-h> <left>
+cnoremap <c-l> <right>
+cnoremap <c-j> <down>
+cnoremap <c-k> <up>
+
+" move easily by <c-h><c-l>
+inoremap <c-h> <left>
+inoremap <c-l> <right>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+
 nnoremap <tab><tab> /(<++>)<Enter><right>cf>
 
 " return to the file .vimrc
-nmap Tv :e \Program Files (x86)\Vim\_vimrc<Enter>
+nnoremap <leader>v :e ~/.vimrc<CR>
 
 " return to the Current Directory
-nmap Te :e  %:p/..<Enter>
+nnoremap <leader>e :e .<CR>
 
 " return to the /Program Files (x86)/
-nmap Tp :e /Program Files (x86)<Enter>
+nnoremap <leader>p :e ~/Python<CR>
 
 " To Run the python script by type Tr
-nmap Tr <S-s>:!python "%:p"<Enter>
+nnoremap <leader>r :w<Enter>:!python3 "%:p"<CR>
 
+" edit $MYVIMRC
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>sv :w<CR> :source $MYVIMRC<CR>
+
+" easymotion
+map <Leader>s <Plug>(easymotion-prefix)
+nmap f ,ss
+nnoremap F f
+nnoremap tt :NERDTree<Enter>
+
+" Shortcuts
+inoremap jk <esc>
+
+"cmap 1 !
+nnoremap w <C-w>
+nnoremap s m
+nnoremap 7 5j
+nnoremap 8 5k
+
+" Spell Check
+nnoremap sc :set spell!<Enter>
+inoremap <s-s><s-c> <c-x>s
+
+" Shortcuts switched
+nnoremap <space> :
+nnoremap s m
+nnoremap 7 5j
+nnoremap 8 5k
+
+" 冒号转换行 
+cnoremap ; <Enter>
+nnoremap ; <Enter>
+inoremap ; <Esc>o
+inoremap <leader>; :<Esc>o
+
+" Tab Site
+nnoremap th :-tabnext<Enter>
+nnoremap tl :+tabnext<Enter>
+
+" Screen Create
+nnoremap sk :set splitbelow<Enter>:split<Enter>
+nnoremap sj :set nosplitbelow<Enter>:split<Enter>
+nnoremap sh :set splitright<Enter>:vsplit<Enter>
+nnoremap sl :set nosplitright<Enter>:vsplit<Enter>
+
+" Screen Switch
+nnoremap K <C-w>K
+nnoremap J <C-w>J
+nnoremap H <C-w>H
+nnoremap L <C-w>L
+
+" Screen Size
+nnoremap _ :resize -3<Enter>
+nnoremap + :resize +3<Enter>
+nnoremap <c--> :vertical resize -3<Enter>
+nnoremap <C-=> :vertical resize +3<Enter>
+
+" save the file in the buffer 
+nnoremap S :w<Enter>
+
+"  <tab> and <space> visualised
+set list
+set listchars=tab:>-,trail:-
+
+" Fold paragraph
+" set equalprg=indent
+set autoindent
+set smartindent
+set foldmethod=indent
+nnoremap ff za
+nnoremap fk zm
+nnoremap fj zr
 " number in front of lines
 hi LineNr guifg=#5C6370
-set relativenumber
+set norelativenumber
 set ruler
-set number
+set nonumber
 set nowrap
 set ignorecase
 set wildmenu
@@ -57,28 +171,7 @@ set showcmd
 set cursorline
 set encoding=utf-8
 set scrolloff=5
-
-" Shortcuts
-imap jk <esc>
-
-"cmap 1 !
-nmap w <C-w>
-nmap <space> :
-nmap s m
-nmap 7 5j
-nmap 8 5k
-
-"  <tab> and <space> visualised
-set list
-set listchars=tab:>-,trail:-
-
-" Fold paragraph
-set autoindent
-set smartindent
-set foldmethod=indent
-nmap ff za
-nmap fk zm
-nmap fj zr
+set nu ru ai si ts=4 sw=4
 
 " Tab methods
 set expandtab
@@ -86,6 +179,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set smarttab
+set backspace=2
 
 " Shut down the error bell
 set novisualbell
@@ -94,18 +188,6 @@ set noerrorbells
 " Share the clipboard
 set clipboard+=unnamed
 set laststatus=2
-
-" Spell Check
-nmap sc :set spell!<Enter>
-imap <S-s><S-C> <C-x>s
-
-set backspace=2
-" Shortcuts switched
-nmap <space> :
-nmap s m
-nmap 7 5j
-nmap 8 5k
-
 " shutdown the Error Warning
 set vb t_vb=
 au GuiEnter * set t_vb=
@@ -114,7 +196,7 @@ au GuiEnter * set t_vb=
 syntax on
 
 " Color Scheme | Font
-set guifont:Consolas:h15
+set guifont:Menlo:h21
 syntax enable
 
 "set term=xterm-256color
@@ -126,41 +208,10 @@ set t_Co=256
 "set default-terminal"screen-256color"
 colorscheme onedark
 
-" 冒号转换行 
-cmap ; <Enter>
-nmap ; <Enter>
-imap ; <right><right><right><right><right><right><right><right><right><right><right><right><right><Enter>
 
-" 高亮 显示
+" Highlight setting
 " set hlsearch
 set incsearch
-
-" Tab Site
-nmap tt :tabe<Enter>
-nmap th :-tabnext<Enter>
-nmap tl :+tabnext<Enter>
-
-" Screen Create
-nmap sk :set splitbelow<Enter>:split<Enter>
-nmap sj :set nosplitbelow<Enter>:split<Enter>
-nmap sh :set splitright<Enter>:vsplit<Enter>
-nmap sl :set nosplitright<Enter>:vsplit<Enter>
-
-" Screen Switch
-nmap K <C-w>K
-nmap J <C-w>J
-nmap H <C-w>H
-nmap L <C-w>L
-
-" Screen Size
-nmap _ :resize -5<Enter>
-nmap + :resize +5<Enter>
-nmap - :vertical resize -5<Enter>
-nmap = :vertical resize +5<Enter>
-
-" 保存
-nmap S :w<Enter>
-
 
 "set lines=500 columns=500
 set guioptions-=T
@@ -170,15 +221,22 @@ set guioptions-=r
 set guioptions-=b
 
 " HELP Document
-set helplang=cn
+set helplang=CN
 set encoding=utf-8
 
 
 " Full Screen Set
-noremap \| <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleFullscreen', 0)<Enter>
-" 按 F12 切换窗口透明度
-noremap <C-j>j <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "100,180")<Enter>
-noremap <C-k>k <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "225,255")<Enter>
+"noremap \| <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleFullscreen', 0)<Enter>
+"" 按 F12 切换窗口透明度
+"noremap <C-j>j <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "100,180")<Enter>
+"noremap <C-k>k <esc>:call libcallnr('gvim_fullscreen.dll', 'ToggleTransparency', "225,255")<Enter>
 
-let g:lightline = { 'colorscheme': 'onedark',}
-let g:airline_theme='onedark'
+let g:lightline         = { 'colorscheme': 'onedark',}
+let g:airline_theme     = 'onedark'
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+
+
+
+
+
+
