@@ -11,7 +11,6 @@
 "      ██║╚██╔╝██║  ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
 "      ██║ ╚═╝ ██║   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "      ╚═╝     ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
-
 " Leader map
 let mapleader = ","
 
@@ -39,6 +38,10 @@ ino <c-i> <BS>
 "(<++>)
 aug python
 autocmd!
+" au BufNewFile *.py i#date:<C-r>=strftime("20%y/%m/%d/%A")
+" au BufNewFile *.py i#coding=UTF-8<Enter>
+" au BufNewFile *.py i#time:<C-r>=strftime("%H:%m")
+
 " When typing ' =  -  +  /  *  % ', add spaces automatically
 au filetype python ino <buffer> + <space>+<space><left><right>
 au filetype python ino <buffer> - <space>-<space><left><right>
@@ -77,6 +80,8 @@ au filetype python nn <buffer> <leader>< <esc>viwa><esc>bi<<esc>el
 au filetype python vn <buffer> <leader>c <C-v>0I# <esc>
 au filetype python nn <buffer> <leader>c <C-v>0I# <esc>
 
+au filetype python ono <buffer> ( :<C-u>normal!t)lvi(<cr>
+
 au filetype python ia <buffer> iff if:<left>
 au filetype python ia <buffer> def def:<left>
 au filetype python ia <buffer> class class:<left>
@@ -84,9 +89,14 @@ au filetype python ia <buffer> ret return
 au filetype python ia <buffer> @@ 1398881912@qq.com
 au filetype python ia <buffer> pirnt print
 
+
 "  <tab> and <space> visualised
 au filetype python set list
 au filetype python set listchars=tab:>-,trail:-
+
+" syntax highlight
+syntax on
+
 aug END
 
 
@@ -98,11 +108,15 @@ aug END
 "  ╚████╔╝ ██║██║ ╚═╝ ██║
 "   ╚═══╝  ╚═╝╚═╝     ╚═╝
 " (<++>)
+aug vim 
+autocmd!
+au filetype vim  nn <leader>c I" <esc>
+aug end
 let maplocalleader = "1"
 
 " color scheme | font
 colorscheme onedark
-set guifont:Consolas:h15
+set guifont:Consolas:h13
 
 " number in front of lines
 hi  linenr guifg=#5c6370
@@ -120,7 +134,7 @@ set nu ru ai si ts=4 sw=4
 " highlight setting
 " set hlsearch
 set incsearch
-" 
+ 
 " set lines=240 columns=160
 set guioptions-=T
 set guioptions-=t
@@ -139,14 +153,7 @@ set encoding=utf-8
 set clipboard+=unnamed
 set laststatus=2
 
-" shut down the error warning
-set novisualbell
-set noerrorbells
-set vb t_vb=
-au guienter * set t_vb=
 
-" syntax highlight
-syntax on
 
 " fold tab method
 set expandtab
@@ -211,18 +218,18 @@ ino jk <esc>
 
 " 冒号转换行 
 cno ; <CR>
-nn ; <CR>
+nn  ; <CR>
 ino ; <esc>o
 
 " spell check
-nn sc :set spell!<CR>
+nn  sc :set spell!<CR>
 ino <s-s><s-c> <c-x>s
 
 " shortcuts switched
-nn <space> :
+nn  <space> :
 
 " <backspace> in insert mode
-cno <c-i> <bs>
+" cno <c-i> <bs>
 
 " move easily by <c-h><c-l>
 cno <c-h> <left>
@@ -238,7 +245,7 @@ ino <c-k> <up>
 
 " Anchor Point
 ino <leader>f <esc>/(<++>)<CR>ca(
-nn <leader>f /(<++>)<CR>
+nn  <leader>f /(<++>)<CR>
 "set term=xterm-256color
 " set t_co=256
 "colorscheme tomorrow-night-eighties
@@ -246,8 +253,16 @@ nn <leader>f /(<++>)<CR>
 "g:onedark_termcolor:256
 " set -g default-terminal"xterm-256color"
 " set default-terminal"screen-256color"
-ca cdp cd<space>/Program Files (x86)/Vim/My_Python<CR>
+ca  cdp cd<space>/Program Files (x86)/Vim/My_Python<CR>
 
+if has("termguicolors")
+    " fix bug for vim
+    set t_8f=^[[38;2;%lu;%lu;%lum
+    set t_8b=^[[48;2;%lu;%lu;%lum
+
+    " enable true color
+    set termguicolors
+endif
 
 
 
@@ -277,5 +292,10 @@ let g:lightline         = { 'colorscheme': 'onedark',}
 let g:airline_theme     = 'onedark'
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
- 
- "niaho
+" shut down the error warning
+set novisualbell
+set noerrorbells
+set vb t_vb=
+au GuiEnter * set t_vb=ienter * set t_vb=
+set noerrorbells visualbell t_vb=
+" autocmd GUIEnter * set visualbell t_vb=
